@@ -1,0 +1,57 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: qr_db
+    restart: always
+    environment:
+      POSTGRES_USER: qruser
+      POSTGRES_PASSWORD: qrpassword
+      POSTGRES_DB: qrplatform
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: 
+      context: ./backend
+    container_name: qr_backend
+    restart: always
+    environment:
+      - DATABASE_URL=postgresql://qruser:qrpassword@db:5432/qrplatform
+      - NODE_ENV=development
+      - PORT=3001
+      - BASE_URL=http://localhost:3001
+      - FRONTEND_URL=http://localhost:5173
+      # Auth
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@qrplatform.com}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin123}
+      - JWT_SECRET=${JWT_SECRET:-super-secret-jwt-key}
+      # Upload
+      - MAX_FILE_SIZE=10485760
+      - UPLOAD_DIR=/app/uploads
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend:/app
+      - ./uploads:/app/uploads
+      - /app/node_modules
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: qr_frontend
+    environment:
+      - VITE_API_URL=http://localhost:3001/api
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

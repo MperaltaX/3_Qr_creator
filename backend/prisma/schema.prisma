@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  password_hash String
+  created_at    DateTime @default(now())
+
+  @@map("admin_users")
+}
+
+model QRCode {
+  id              String   @id @default(uuid())
+  short_id        String   @unique
+  name            String
+  type            String   // URL, VCARD, TEXT, WIFI, EMAIL, FILE
+  destination_url String?  
+  content_data    Json     // Flexible JSON payload
+  design_settings Json     // Visual configuration
+  file_path       String?  // If type == FILE
+  is_dynamic      Boolean  @default(true)
+  is_active       Boolean  @default(true)
+  total_scans     Int      @default(0)
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+  
+  scans           Scan[]
+
+  @@map("qr_codes")
+}
+
+model Scan {
+  id          String   @id @default(uuid())
+  qr_id       String
+  scanned_at  DateTime @default(now())
+  ip_address  String?
+  country     String?
+  city        String?
+  device_type String?
+  os          String?
+  browser     String?
+  referer     String?
+
+  qr_code     QRCode   @relation(fields: [qr_id], references: [id], onDelete: Cascade)
+
+  @@index([qr_id])
+  @@map("scans")
+}
