@@ -6,6 +6,18 @@ Si eres un desarrollador Junior, este proyecto es excelente para aprender sobre 
 
 ---
 
+## 📸 Capturas de Pantalla
+
+<div align="center">
+  <img src="frontend/src/assets/captura_1.png" width="45%" alt="Captura 1" />
+  <img src="frontend/src/assets/captura_2.png" width="45%" alt="Captura 2" />
+  <br>
+  <img src="frontend/src/assets/captura_3.png" width="45%" alt="Captura 3" />
+  <img src="frontend/src/assets/captura_4.png" width="45%" alt="Captura 4" />
+</div>
+
+---
+
 ## 🎯 ¿Qué hace este proyecto?
 
 Permite a los usuarios:

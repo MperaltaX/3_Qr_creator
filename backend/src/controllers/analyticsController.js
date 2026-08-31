@@ -86,6 +86,7 @@ const getQRAnalytics = async (req, res) => {
         short_id: qr.short_id,
         design_settings: qr.design_settings,
         total_scans: qr.total_scans,
+        is_dynamic: qr.is_dynamic,
         created_at: qr.created_at
       },
       timeline: timelineArray,

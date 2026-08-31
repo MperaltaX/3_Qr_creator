@@ -1,3 +1,4 @@
+require('dotenv').config({ path: '../.env' });
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const { nanoid } = require('nanoid');
@@ -19,10 +20,10 @@ async function main() {
   console.log('Deleted existing records.');
 
   const qrData = [
-    { name: 'Menú Restaurante Centro', type: 'URL', scansToCreate: 1250 },
-    { name: 'WiFi Recepción', type: 'WIFI', scansToCreate: 430 },
-    { name: 'Campaña Instagram Verano', type: 'URL', scansToCreate: 890 },
-    { name: 'Contacto Soporte Técnico', type: 'VCARD', scansToCreate: 120 },
+    { name: 'Menú Restaurante Centro (Dinámico)', type: 'URL', scansToCreate: 1250, is_dynamic: true },
+    { name: 'WiFi Recepción (Estático)', type: 'WIFI', scansToCreate: 430, is_dynamic: false },
+    { name: 'Campaña Instagram Verano (Dinámico)', type: 'URL', scansToCreate: 890, is_dynamic: true },
+    { name: 'Contacto Soporte Técnico (Estático)', type: 'VCARD', scansToCreate: 120, is_dynamic: false },
   ];
 
   for (const data of qrData) {
@@ -34,6 +35,7 @@ async function main() {
         destination_url: 'https://ejemplo.com',
         content_data: { url: 'https://ejemplo.com' },
         design_settings: {},
+        is_dynamic: data.is_dynamic,
         total_scans: data.scansToCreate
       }
     });
