@@ -18,14 +18,36 @@ Si eres un desarrollador Junior, este proyecto es excelente para aprender sobre 
 
 ---
 
-## 🎯 ¿Qué hace este proyecto?
+## 🎯 Características Principales
 
-Permite a los usuarios:
-1. **Crear diferentes QRs**: Enlaces (URL), Textos, Emails, vCard (tarjetas de contacto) y credenciales WiFi.
-2. **Personalizar el diseño**: Cambiar colores, formas de los puntos y añadir logos al centro.
-3. **Elegir entre dos modos**:
-   - **Estático (Por Defecto)**: Guarda el texto directamente en los píxeles de la imagen del QR. Funciona sin internet.
-   - **Dinámico**: Guarda un "enlace corto" (ej. `tusitio.com/q/123`). Al escanearlo, el servidor cuenta la visita (país, sistema operativo) y luego redirige al usuario a su destino real.
+### 1. 📝 Tipos de Códigos QR Disponibles
+Nuestra plataforma soporta la creación de múltiples tipos de códigos QR, adaptándose a cualquier necesidad:
+- **Enlace (URL)**: Redirige a cualquier página web, red social, video de YouTube, etc.
+- **Texto**: Muestra un mensaje de texto plano en la pantalla del usuario al escanearlo.
+- **Email**: Prepara un correo electrónico con la dirección de destino, asunto y mensaje predefinidos listos para enviar.
+- **vCard (Contacto)**: Genera una tarjeta de contacto descargable en el celular (incluyendo nombre, teléfono, email, sitio web y empresa).
+- **WiFi**: Permite conectarse automáticamente a una red WiFi sin necesidad de teclear la contraseña.
+
+### 2. ⚡ Tipos de Comportamiento: Estático vs Dinámico
+Puedes elegir cómo funcionará el "cerebro" de tu código QR:
+
+- **Modo Estático (Por Defecto)**: 
+  La información se graba directamente en los cuadritos (píxeles) del QR. Si cambias la información, el dibujo del QR cambia y debes volver a imprimirlo. Su gran ventaja es que funcionan **sin internet** (excepto los de enlaces web, por supuesto) y nunca caducan. Ideal para tarjetas vCard, WiFi o Textos.
+
+- **Modo Dinámico**: 
+  El QR guarda un "enlace corto" intermedio (ej. `midominio.com/q/abcd`). Cuando el usuario lo escanea:
+  1. Su teléfono visita rápidamente nuestro servidor.
+  2. Nuestro servidor **registra la visita**, detectando el país, navegador, sistema operativo y fecha.
+  3. Redirige instantáneamente al destino final.
+  
+  **Ventajas del Dinámico:** Puedes ver estadísticas de escaneo y, lo más importante, **puedes editar el contenido final sin tener que cambiar la imagen impresa del QR**.
+
+### 3. 🎨 Personalización de Estilos Avanzada
+El diseño aburrido en blanco y negro es cosa del pasado. Tienes control total sobre el aspecto de tus códigos QR:
+- **Colores Personalizables**: Puedes elegir un color sólido, un color de fondo y hasta un gradiente atractivo.
+- **Forma de los Puntos (Dots)**: Cambia los píxeles cuadrados tradicionales por formas redondeadas, puntos (dots), cruces o estilos extra (classy).
+- **Forma de las Esquinas (Corners)**: Personaliza tanto el marco exterior de los cuadrados de las esquinas como el punto central interior (cuadrado, circular, punteado).
+- **Logotipos Centrados**: Sube tu propio logo o imagen para que se muestre en el centro del código QR sin afectar la capacidad de lectura.
 
 ---
 
