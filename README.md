@@ -72,6 +72,8 @@ Está dividido en dos partes principales que se comunican entre sí a través de
 
 Hemos configurado **Docker** para que no tengas que instalar Node.js ni PostgreSQL manualmente en tu PC. Docker creará "cajas" (contenedores) con todo lo necesario instalado dentro.
 
+⚠️ **Requisito indispensable:** El único requisito para ejecutar este proyecto es tener instalado Docker (o Docker Desktop) en tu sistema. Puedes descargarlo según tu sistema operativo: [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) | [Mac](https://docs.docker.com/desktop/setup/install/mac-install/) | [Linux](https://docs.docker.com/desktop/setup/install/linux/).
+
 1. **Configura tus variables**
    Crea un archivo llamado `.env` en la misma carpeta raíz del proyecto y pega esto:
    ```env
